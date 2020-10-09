@@ -44,27 +44,77 @@ function isNumber(){
 /**
  * Función del ejercicio 03: numero part entera.
  */
-//TODO
+function numberIntegerPart(){
+    myInput = captureInput()
+    if (isNaN(myInput)) {
+        document.getElementById("divResults").innerHTML = myInput + " IS NOT A NUMBER.";
+    } else {
+        //.floor() sólo funciona con números positivos
+        myInput = Math.abs(myInput);
+        var inputInteger = Math.floor(myInput);
+        document.getElementById("divResults").innerHTML = "INTEGER: " + inputInteger;
+    }
+}
 
 /**
  * Función del ejercicio 04: numero part decimals.
  */
-//TODO
+function numberDecimalPart(){
+    myInput = captureInput()
+    if (isNaN(myInput)) {
+        document.getElementById("divResults").innerHTML = myInput + " IS NOT A NUMBER.";
+    } else {
+        //var inputDecimal = myInput % 1;  OJO: esto no me da exacto
+        myInput = Math.abs(myInput);
+        var inputDecimal = myInput - Math.floor(myInput);
+        //ESTO TAMPOCO ME DA EXACTO??? TODO: PREGUNTAR
+        document.getElementById("divResults").innerHTML = "DECIMAL: " + inputDecimal;
+    }
+}
 
 /**
  * Función del ejercicio 05.
  */
-//TODO
+function divideWithDecimals(){
+    myInput = captureInput()
+    if (isNaN(myInput)) {
+        document.getElementById("divResults").innerHTML = myInput + " IS NOT A NUMBER.";
+    } else {
+        var result = myInput / 19;
+        document.getElementById("divResults").innerHTML = myInput + " / 19 = " + result.toFixed(2);
+    }
+}
 
 /**
  * Función del ejercicio 06.
  */
-//TODO
+function checkEmptyString(){
+    myInput = captureInput();
+    if (!myInput.length) {
+    document.getElementById("divResults").innerHTML = "This string is empty.";
+    } else {
+        document.getElementById("divResults").innerHTML = myInput + " is not an empty string.";
+    }  
+    //Ver: https://stackoverflow.com/questions/154059/how-can-i-check-for-an-empty-undefined-null-string-in-javascript
+}
 
 /**
- * Función del ejercicio 07.
+ * Función del ejercicio 07: invertir un string
  */
-//TODO
+function invertString(){
+    myInput = captureInput();
+    var reverseInput = "";
+    for (var i = myInput.length; i > 0; i--) {
+        reverseInput += myInput[i-1];
+    }
+    document.getElementById("divResults").innerHTML = myInput + " in reverse is:<br>" + reverseInput;
+
+    /*
+    Otra opción:
+    let splitInput = myInput.split("");
+    let reverseInput = splitInput.reverse().join("");
+    */
+}
 
 /**
  * Función del ejercicio 08.

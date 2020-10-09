@@ -9,7 +9,7 @@ header{
 
 .divContent{
     background-color: rgb(192, 211, 211);
-    margin: 0px auto;
+    margin: 0 auto;
     width: 94%;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -24,7 +24,7 @@ h3{
 }
 
 #divResults{
-    margin: 0px auto;
+    margin: 0 auto;
     margin-bottom: 10px;
     padding: 10px;
     width: 98%;
