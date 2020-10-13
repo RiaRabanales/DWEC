@@ -117,39 +117,95 @@ function invertString(){
 }
 
 /**
- * Función del ejercicio 08.
+ * Función del ejercicio 08: contar 'a'
  */
-//TODO
+//ver para match(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
+function countAs(){
+    myInput = captureInput();
+    var count = 0;
+    for (var i = 0; i < myInput.length; i++) {
+        if (myInput[i] == 'a') {
+            count++;
+        }
+    }
+    document.getElementById("divResults").innerHTML = " The letter a is this many times in " + myInput + ': ' + count;
+}
 
 /**
- * Función del ejercicio 09.
+ * Función del ejercicio 09: substring abans de la primera a.
  */
-//TODO
+function substringAbansA(){
+    myInput = captureInput();
+    var positionA = myInput.indexOf('a');
+    if (positionA == -1){
+        document.getElementById("divResults").innerHTML = "This string has no a."
+    } else {
+        var stringA = myInput.slice(0, positionA);
+        document.getElementById("divResults").innerHTML = "Before the first a: " + stringA;
+    }
+}
 
 /**
- * Función del ejercicio 10.
+ * Función del ejercicio 10: posició de primera i darrera a
  */
-//TODO
+function findAs(){
+    myInput = captureInput();
+    var positionAFirst = myInput.indexOf('a');
+    if (positionAFirst == -1){
+        document.getElementById("divResults").innerHTML = "This string has no a."
+    } else {
+        var positionALast = myInput.lastIndexOf('a');
+        if (positionALast == -positionAFirst){
+            document.getElementById("divResults").innerHTML = "This string only has one a, and it's at position " + positionAFirst;
+        } else if (positionAFirst == -1){
+            //eso seria lo mismo q lo anterior?
+        } else {
+            document.getElementById("divResults").innerHTML = "The first a is at position " + positionAFirst + "<br> The last a is at position " + positionALast + "<br>";
+        }
+    }   
+}
+
 
 /**
- * Función del ejercicio 11.
+ * Función del ejercicio 11: esborrar as.
  */
-//TODO
+function deleteAs(){
+    myInput = captureInput();
+    myInput = myInput.replace(/a/g, '');
+    document.getElementById("divResults").innerHTML = myInput;
+}
 
 /**
- * Función del ejercicio 12.
+ * Función del ejercicio 12: canviar a per *.
  */
-//TODO
+function changeAs(){
+    myInput = captureInput();
+    myInput = myInput.replace(/a/g, '*');
+    document.getElementById("divResults").innerHTML = myInput;
+}
 
 /**
- * Función del ejercicio 13.
+ * Función del ejercicio 13: cap i cua.
  */
-//TODO
+function reverseAndAdd(){
+    myInput = captureInput();
+    var reverseInput = "";
+    reverseInput += myInput[0];
+    for (var i = myInput.length; i > 0; i--) {
+        reverseInput += myInput[i-1];
+    }
+    reverseInput += myInput[0];
+    document.getElementById("divResults").innerHTML = reverseInput;
+}
 
 /**
- * Función del ejercicio 14.
+ * Función del ejercicio 14: eliminar espais
  */
-//TODO
+function noSpaces(){
+    myInput = captureInput();
+    myInput = myInput.replace(/ /g, '');
+    document.getElementById("divResults").innerHTML = myInput;
+}
 
 /**
  * Función del ejercicio 15.
