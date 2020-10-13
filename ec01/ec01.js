@@ -191,7 +191,7 @@ function reverseAndAdd(){
     myInput = captureInput();
     var reverseInput = "";
     reverseInput += myInput[0];
-    for (var i = myInput.length; i > 0; i--) {
+    for (let i = myInput.length; i > 0; i--) {
         reverseInput += myInput[i-1];
     }
     reverseInput += myInput[0];
@@ -208,16 +208,52 @@ function noSpaces(){
 }
 
 /**
- * Función del ejercicio 15.
+ * Función del ejercicio 15: canviar espais per guions.
  */
-//TODO
+function changeSpaces(){
+    myInput = captureInput();
+    myInput = myInput.replace(/ /g, '-');
+    document.getElementById("divResults").innerHTML = myInput;
+}
 
 /**
- * Función del ejercicio 16.
+ * Función del ejercicio 16: crear acrònim a partir d'una frase.
  */
-//TODO
+function getAcronym(){
+    myInput = captureInput();
+    var words = myInput.split(' ');
+    var acronym = '';
+    for (let i = 0; i < words.length; i++){
+        acronym += words[i].charAt(0);
+    }
+    acronym = acronym.toUpperCase();
+    document.getElementById("divResults").innerHTML = acronym;
+}
 
 /**
- * Función del ejercicio 17.
+ * Función del ejercicio 17: validar correu electrònic i comprovar (sense expressions regulars) que:
+ * .té una sola @
+ * .el servidor té una extensió .net,.org o .com
+ * .l'extensió està després de la @, no abans.
  */
-//TODO
+function validateEmail(){
+    myInput = captureInput();
+    var message = '';
+    if (myInput.indexOf('@') == -1) {
+        message = 'THIS EMAIL IS NOT VALID: NO @ PRESENT.'
+    } else {
+        var emailSplit = myInput.split('@');
+        if (emailSplit.length < 2){
+            message = 'THIS EMAIL IS NOT VALID: THERE ARE EMPTY SECTIONS PRESENT.'
+        } else if (emailSplit.length > 2){
+            message = 'THIS EMAIL IS NOT VALID: MORE THAN ONE @ PRESENT.'
+        } else if (!emailSplit[1].endsWith('.net') || !emailSplit[1].endsWith('.org') || !emailSplit[1].endsWith('.com')) {
+            message = 'THIS EMAIL IS NOT VALID: THERE IS NO EXTENSION AFTER @.'
+        } else if (emailSplit[0].includes('.net') || emailSplit[0].includes('.org') || emailSplit[0].includes('.com')) {
+            message = 'THIS EMAIL IS NOT VALID: EXTENSION FOUND BEFORE @.'
+        } else {
+            message = 'THIS E-MAIL IS VALID.'
+        }
+    }
+    document.getElementById("divResults").innerHTML = message;
+}
