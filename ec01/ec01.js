@@ -1,3 +1,5 @@
+'use strict'
+
 var myInput;
 
 /**
@@ -64,11 +66,13 @@ function numberDecimalPart(){
     if (isNaN(myInput)) {
         document.getElementById("divResults").innerHTML = myInput + " IS NOT A NUMBER.";
     } else {
-        //var inputDecimal = myInput % 1;  OJO: esto no me da exacto
+        var inputArray = myInput.split('.');
+        var inputDecimal = inputArray[1];
+        /* Si fuera numérico, aunque no da exacto:
         myInput = Math.abs(myInput);
         var inputDecimal = myInput - Math.floor(myInput);
-        //ESTO TAMPOCO ME DA EXACTO??? TODO: PREGUNTAR
-        document.getElementById("divResults").innerHTML = "DECIMAL: " + inputDecimal;
+        */
+        document.getElementById("divResults").innerHTML = "DECIMAL: ." + inputDecimal;
     }
 }
 
@@ -104,7 +108,7 @@ function checkEmptyString(){
 function invertString(){
     myInput = captureInput();
     var reverseInput = "";
-    for (var i = myInput.length; i > 0; i--) {
+    for (let i = myInput.length; i > 0; i--) {
         reverseInput += myInput[i-1];
     }
     document.getElementById("divResults").innerHTML = myInput + " in reverse is:<br>" + reverseInput;
@@ -123,7 +127,7 @@ function invertString(){
 function countAs(){
     myInput = captureInput();
     var count = 0;
-    for (var i = 0; i < myInput.length; i++) {
+    for (let i = 0; i < myInput.length; i++) {
         if (myInput[i] == 'a') {
             count++;
         }
