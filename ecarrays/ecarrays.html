@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWEC - exercici 01</title>
+
+    <link rel="stylesheet" href="ecarrays.css" />
+    <script src="ecarrays.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>DWEC section1 (MRG)</h1>
+    </header>
+    <main>
+
+        <!-- Caja para introducir datos -->
+        <div class="divContent">
+            <h3>INPUT</h3>
+            <label>Write down your array: </label>
+            <input id="myInput" />
+        </div>
+
+        <!-- Caja para seleccionar una acción a través de botones -->
+        <div class="divContent">
+            <h3>OPTIONS</h3>
+            <div id="buttons">
+                <button class="indivButton" onclick="strOrdenaMajor()">01- strOrdenaMajor</button>
+                <button class="indivButton" onclick="numOrdenaMajor()">02- numOrdenaMajor</button>
+                <button class="indivButton" onclick="numOrdenaMenor()">03- numOrdenaMenor</button>
+                <button class="indivButton" onclick="strOrdenaPerLong()">04- strOrdenaPerLong</button>
+            </div>
+        </div>
+
+        <!-- Caja para lanzar los resultados -->
+        <div class="divContent">
+            <h3>RESULTS</h3>
+            <div id="divResults"></div>
+        </div>
+
+    </main>
+</body>
+</html>
