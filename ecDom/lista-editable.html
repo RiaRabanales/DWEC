@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista Editable</title>
+
+    <script>
+      function lanzarJs() {
+        //Crea una llista ordenada que contengui el codi js dins de l’etiqueta <script>
+        document.getElementById("addLi").addEventListener("click", function () {
+          addLi();
+        });
+
+        var tagTitulo = document.createElement("p");
+        var titulo = document.createTextNode("Elementos:");
+        tagTitulo.appendChild(titulo);
+        document.body.appendChild(tagTitulo);
+
+        var miLista = document.createElement("ul");
+        document.body.appendChild(miLista);
+        document.getElementsByTagName("ul")[0].setAttribute("id", "miUl");
+
+        function addLi() {
+          var tagElemento = document.createElement("li");
+          console.log(document.getElementById("miLi").value);
+          var elemento = document.getElementById("miLi").value;
+          tagElemento.innerHTML = elemento;
+          document.getElementById("miUl").appendChild(tagElemento);
+        }
+      }
+    </script>
+  </head>
+  <body onload="lanzarJs();">
+    <label for="miLi">Elemento <i>li</i>: </label>
+    <input type="text" id="miLi" name="miLi" />
+    <button id="addLi">añadir</button>
+    <br />
+  </body>
+</html>
