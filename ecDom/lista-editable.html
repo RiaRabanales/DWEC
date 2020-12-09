@@ -7,6 +7,7 @@
 
     <script>
       function lanzarJs() {
+        contador = 0;
         //Crea una llista ordenada que contengui el codi js dins de l’etiqueta <script>
         document.getElementById("addLi").addEventListener("click", function () {
           addLi();
@@ -22,11 +23,29 @@
         document.getElementsByTagName("ul")[0].setAttribute("id", "miUl");
 
         function addLi() {
-          var tagElemento = document.createElement("li");
-          console.log(document.getElementById("miLi").value);
-          var elemento = document.getElementById("miLi").value;
+          //1. genero el li:
+          let tagElemento = document.createElement("li");
+          let id = "li" + contador++;
+          tagElemento.setAttribute("id", id);
+          let elemento = document.getElementById("miLi").value;
           tagElemento.innerHTML = elemento;
+
+          //2. genero el botón de borrado:
+          let botonBorrar = document.createElement("button");
+          botonBorrar.style.marginLeft = "1%";
+          botonBorrar.innerHTML = "borrar";
+          botonBorrar.addEventListener("click", function() {borrarLi(id);});
+          tagElemento.appendChild(botonBorrar);
+
+          //3. lo meto en el documento:
           document.getElementById("miUl").appendChild(tagElemento);
+          
+        }
+
+        function borrarLi(idLi) {
+          //this.parentNode.remove(); ¿no funciona?
+          let liBorrado = document.getElementById(idLi);
+          liBorrado.remove();
         }
       }
     </script>
