@@ -45,6 +45,7 @@ function generarPostIt() {
   var tagPostIt = document.createElement("div");
   var idPostIt = "div" + contador++;
   tagPostIt.setAttribute("id", idPostIt);
+  tagPostIt.className = "miPostIt";
   tagPostIt.style.width = "100px";
   tagPostIt.style.height = "100px";
   tagPostIt.style.background = "yellow";
@@ -92,8 +93,9 @@ function generarPostIt() {
   //Genero el contenido:
   var bodyPostIt = document.createElement("div");
   bodyPostIt.style.padding = "1%";
+  bodyPostIt.style.cursor = "grabbing";
   bodyPostIt.addEventListener("click", function () {
-    intercambiarPostIt();
+    intercambiarPostIt(idPostIt);
   });
   var textoPostIt = document.getElementById("miPostIt").value;
   var pTextoPostIt = document.createElement("p");
@@ -110,7 +112,6 @@ function generarPostIt() {
 
 function cambiarColor() {
   var miColor = document.getElementById("color").value;
-  let postIts = document.getElementsByClassName("miPostIt");
   let checks = document.querySelectorAll('input[type="checkbox"]:checked');
   for (let checkbox of checks) {
     checkbox.parentNode.parentNode.parentNode.style.background = miColor;
@@ -122,6 +123,32 @@ function cambiarColor() {
 Intercanviar postit: En clicar a sobre del text interior de un Postit, aquest Postit se intercanvia amb el postit que té a la seva esquerra.
  Si el postit és el primer de tots, llavors s’intercanvia amb el darrer de la llista de postits.
 */
-function intercambiarPostIt() {
-  //TODO hacer
+function intercambiarPostIt(idBase) {
+  //Recordar que he generado un id para cada post it: var idPostIt = "div" + contador++; empezando por div0
+  let postits = document.getElementsByClassName("miPostIt");
+    console.log(postits);
+  let posicion = obtenerPosicion(document.getElementById(idBase), postits);
+  console.log(posicion);
+
+  let copiaPostIt = document.getElementById(idBase).cloneNode(true);
+  copiaPostIt.addEventListener("click", function() { intercambiarPostIt(idBase)});
+
+  document.getElementById(idBase).remove();
+
+  if (posicion == 0) {
+    document.getElementById("bodyDiv").appendChild(copiaPostIt);
+  } else {
+    document.getElementById("bodyDiv").insertBefore(copiaPostIt, document.getElementById("bodyDiv").children[posicion + 1]);
+    //Realmente insertBefore ya me haría lo codificado en el if
+  }
+
+}
+
+function obtenerPosicion(div, postits) {
+  let i;
+  for (i = 0; i < postits.length; i++) {
+    if (div == postits[i]) {
+      return i;
+    }
+  }
 }
